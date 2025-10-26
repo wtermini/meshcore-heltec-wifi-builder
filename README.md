@@ -10,6 +10,12 @@ This build system was "vibe coded 🤮" with GitHub Copilot based on the excelle
 
 **IMPORTANT**: Your Wi-Fi credentials are embedded in the compiled firmware at build time. **Do not share the compiled binary files publicly** if they contain your real Wi-Fi credentials.
 
+## Testing info
+
+Tested with MeshCore 1.9.1 (commit: b2dcb06197897807fafb539c2710b2aa352792ee)
+https://github.com/meshcore-dev/MeshCore/commit/b2dcb06197897807fafb539c2710b2aa352792ee
+
+
 ## Features
 
 - **Docker-based**: Clean, reproducible build environment using Ubuntu 24.04
