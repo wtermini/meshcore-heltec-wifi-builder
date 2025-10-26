@@ -1,0 +1,19 @@
+# Ignore firmware output directory
+firmware-output/
+
+# Ignore build cache directory (contains large PlatformIO tools)
+build-cache/
+
+# Ignore Docker build context files
+.dockerignore
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore temporary build files
+*.tmp
+*.log
+
+# Ignore backup files
+*.backup
+*~
