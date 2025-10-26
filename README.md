@@ -4,7 +4,11 @@ This project provides a Docker-based build system for compiling MeshCore firmwar
 
 ## ⚠️ Disclaimer
 
-This build system was "vibe coded 🤮" with GitHub Copilot based on the excellent work and documentation at [Ottawa Mesh - MeshCore/Heltekv3Wifi](https://ottawamesh.ca/index.php?title=MeshCore/Heltekv3Wifi). All credit for the underlying firmware and Wi-Fi implementation goes to the MeshCore development team and the Ottawa Mesh community.  This repo was created to help me build the firmware faster and I hope it helps you to.
+This build system was "vibe coded 🤮" with GitHub Copilot based on the excellent work and documentation at [Ottawa Mesh - MeshCore/Heltekv3Wifi](https://ottawamesh.ca/index.php?title=MeshCore/Heltekv3Wifi). All credit for the underlying firmware and Wi-Fi implementation goes to the MeshCore development team and the Ottawa Mesh community.
+
+## ⚠️ Security Warning
+
+**IMPORTANT**: Your Wi-Fi credentials are embedded in the compiled firmware at build time. **Do not share the compiled binary files publicly** if they contain your real Wi-Fi credentials.
 
 ## Features
 
@@ -13,7 +17,7 @@ This build system was "vibe coded 🤮" with GitHub Copilot based on the excelle
 - **Git-based Versioning**: Uses whatever version is current in the MeshCore repository
 - **Fresh Repository**: Always pulls the latest MeshCore code at build time
 - **Safe Output**: Generates firmware files with clear naming and build information
-- **Smart Caching**: Caches PlatformIO tools and dependencies for faster subsequent builds
+- **Build Caching**: Caches PlatformIO tools and dependencies for subsequent builds
 
 ## Quick Start
 
@@ -91,11 +95,11 @@ The script will:
 
 ## Caching System
 
-The build system includes intelligent caching to dramatically speed up subsequent builds:
+The build system includes caching for subsequent builds:
 
 ### How It Works
-- **First build**: Downloads ~200MB of PlatformIO tools and ESP32 toolchain (3-5 minutes)
-- **Subsequent builds**: Reuses cached tools, only compiles firmware (~30 seconds)
+- **First build**: Downloads PlatformIO tools and ESP32 toolchain
+- **Subsequent builds**: Reuses cached tools, only compiles firmware
 - **Cache location**: `./build-cache/` directory (automatically created)
 
 ### Cache Management
@@ -110,20 +114,13 @@ ls -la build-cache/
 ./run-build.sh --ssid "MyWiFi" --password "MyPass" --cache "/path/to/cache"
 ```
 
-### Cache Size
-- Initial download: ~200MB
-- Persistent cache: ~150MB
-- Time savings: 80-90% faster builds after first run
-
 ## Requirements
 
 - Docker
 - macOS, Linux, or Windows with WSL2
 - Internet connection (to clone the latest MeshCore repository)
 
-## Security Warning
 
-⚠️ **IMPORTANT**: Your Wi-Fi credentials are embedded in the compiled firmware at build time. **Do not share the compiled binary files publicly** if they contain your real Wi-Fi credentials.
 
 ## Architecture
 
